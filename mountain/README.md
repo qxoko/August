@@ -1,0 +1,3 @@
+# Mountain
+
+This code has been extensively restructured from the original distribution as part of [August](https://github.com/qxoko/August).  As a screenwriter who regularly uses Fountain, Mountain is an essential part of my workflow.  August brings Mountain integration directly into Sublime Text 3.  See [mjrusso's original project here](https://github.com/mjrusso/mountain) for the original command line tool.

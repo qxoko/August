@@ -1,0 +1,121 @@
+%YAML 1.2
+---
+file_extensions:
+  - fountain
+scope: text.fountain
+
+contexts:
+  title:
+    - match: '^(?i)(format|title|credit|authors?|source|draft date|contact|copyright|notes):'
+      scope: constant.numeric
+      push:
+        - meta_scope: constant.numeric
+        - match: '^$'
+          pop: true
+
+  scene:
+    - match: '^(?i)(\.|int\.?|ext\.?|est\.?|i/e\.?|int\.?/ext\.?|flashback\.?)[\p{L}\p{N}/\-\(\) .]+'
+      scope: entity.name.function
+      push:
+        - match: '(#[\p{L}\p{N}-.]+#)?$'
+          scope: entity.name.constant
+          pop: true
+
+  action:
+    - match: '^!'
+      scope: comment
+
+  note:
+    - match: '\[\[\s*(?=\S)'
+      scope: variable.parameter.begin
+      push:
+        - meta_scope: variable.parameter.end
+        - match: '\]\]'
+          pop: true
+
+  boneyard:
+    - match: '/\*'
+      scope: comment
+      push:
+        - meta_scope: comment
+        - match: '\*/'
+          pop: true
+
+  characters:
+    - match: '^\s*[\p{Lu}\p{N} ]+$'
+      scope: string
+      push:
+        - meta_scope: entity.other.inherited-class # parentheticals
+        - include: dialogue
+
+  # parentheticals
+  # - match: '^\s*\(.*\)$'
+
+  dialogue:
+    - match: '^\s*[^\(\)]+$'
+      scope: dialogue
+      pop: true
+
+  centered:
+    - match: '^\s*\>.+\<$'
+      scope: centered
+
+  transition:
+    - match: '^\s*.+TO:$'
+      scope: entity.name.tag
+    - match: '^\s*\>.+$'
+      scope: entity.name.tag
+
+  lyrics:
+    - match: '^~.+'
+      scope: lyrics
+
+  sections:
+    - match: '^#.+$'
+      scope: entity.name.filename
+
+  synopses:
+    - match: '^=.+$'
+      scope: meta.diff
+
+  pagebreak:
+    - match: '---$'
+      scope: support.function
+
+  markup:
+    - match: '\*\*\*'
+      scope: markup.hidden
+      push:
+        - meta_scope: markup.inserted
+        - match: '\*\*\*'
+          scope: markup.hidden
+          pop: true
+    - match: '\*\*'
+      scope: markup.hidden
+      push:
+        - meta_scope: markup.changed
+        - match: '\*\*'
+          scope: markup.hidden
+          pop: true
+    - match: '\*'
+      scope: markup.hidden
+      push:
+        - meta_scope: message.error
+        - match: '\*'
+          scope: markup.hidden
+          pop: true
+
+  main:
+    - include: title
+    - include: scene
+    - include: action
+    - include: note
+    - include: boneyard
+    - include: characters
+    - include: centered
+    - include: transition
+    - include: lyrics
+    - include: sections
+    - include: synopses
+    - include: pagebreak
+    - include: markup

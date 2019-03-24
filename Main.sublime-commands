@@ -1,0 +1,26 @@
+[
+	{
+		"caption": "August: List Scenes",
+		"command": "august_print"
+	},
+	{
+		"caption": "August: Add Scene Numbers",
+		"command": "august_scene_number"
+	},
+	{
+		"caption": "August: Remove Scene Numbers",
+		"command": "august_remove_scene_number"
+	},
+	{
+		"caption": "August: Show/Hide Boneyard",
+		"command": "august_hide_boneyard"
+	},
+	{
+		"caption": "August: Merge File",
+		"command": "august_merge"
+	},
+	{
+		"caption": "August: Split File",
+		"command": "august_split"
+	}
+]

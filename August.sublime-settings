@@ -1,0 +1,16 @@
+{
+	"extensions":
+	[
+		"fountain",
+		"ftn"
+	],
+	"word_separators": "/\\()\"-:.,;<>~!@#$%^&*|+=[]{}`~?",
+	"word_wrap": true,
+	"wrap_width": 62,
+	"gutter": false,
+	"highlight_line": false,
+	"draw_centered": true,
+	"spell_check": true,
+	"trim_automatic_white_space": true,
+	"line_numbers": false,
+}
