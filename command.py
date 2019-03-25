@@ -14,7 +14,9 @@ class AugustPrintCommand(sublime_plugin.TextCommand):
 
 		output_file = create_buffer(self)
 		output_file.set_name('Scene List')
-		output_file.set_syntax_file('Packages/August/August.sublime-syntax')
+
+		# output_file.set_syntax_file('Packages/August/August.sublime-syntax')
+		# output_file.set_read_only(True)
 
 		title = 'SCENE LIST: '
 
@@ -25,13 +27,11 @@ class AugustPrintCommand(sublime_plugin.TextCommand):
 
 		output_file.insert(edit, output_file.size(), title)
 
-		index  = 1
+		index = 1
 
 		for region in source_file.find_by_selector(scope.scene):
 			output_file.insert(edit, output_file.size(), "\n{}.\t{}".format(index, source_file.substr(region)).rstrip())
 			index += 1
-
-		output_file.set_read_only(True)
 
 
 def get_reverse_scope_list(file, scope):

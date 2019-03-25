@@ -61,9 +61,7 @@ contexts:
       scope: centered
 
   transition:
-    - match: '^\s*.+TO:$'
-      scope: entity.name.tag
-    - match: '^\s*\>.+$'
+    - match: '(?i)^\s*.+to:$|^\s*\>.+$'
       scope: entity.name.tag
 
   lyrics:
