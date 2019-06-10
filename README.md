@@ -14,11 +14,11 @@ This package is considered **alpha** and does not yet have an official release. 
 
 + `August: Merge Files`
 
-  Merges a list of files into a single master file.  (See [Split/Merge Workflow](#a-split-merge-workflow)).
+  Merges a list of files into a single master file.  (See [Split/Merge Workflow](#a-splitmerge-workflow)).
 
 + `August: Split Files`
 
-  Breaks a master file back down into its constituent files. (See [Split/Merge Workflow](#a-split-merge-workflow)).
+  Breaks a master file back down into its constituent files. (See [Split/Merge Workflow](#a-splitmerge-workflow)).
 
 + `August: Add Scene Numbers`
 
