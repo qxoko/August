@@ -13,13 +13,21 @@ contexts:
         - match: '^$'
           pop: true
 
+  # this seems odd at first, but there are two regexes for
+  # scenes so that in themes with inverse colours for
+  # scenes (see qxoko/CircusFreak), the blank space between
+  # the number and the scene heading is honoured.
+  # yes it's pedantic.  i know.
+
+  scene_number:
+    - match: ^(?i)((\.(?!\.)|INT\.?|EXT\.?|EST\.?|I/E\.?|INT\.?/EXT\.?|FLASHBACK\.?)[\p{L}\p{N}/\-\(\)'\. ]*)( )(\#\d*\#)$
+      captures:
+        1: entity.name.function
+        4: entity.name.constant
+
   scene:
-    - match: ^(?i)(\.(?!\.)|int\.?|ext\.?|est\.?|i/e\.?|int\.?/ext\.?|flashback\.?)[\p{L}\p{N}/\-\(\)' .]+
+    - match: ^(?i)((\.(?!\.)|INT\.?|EXT\.?|EST\.?|I/E\.?|INT\.?/EXT\.?|FLASHBACK\.?)[\p{L}\p{N}/\-\(\)'\. ]*)$
       scope: entity.name.function
-      push:
-        - match: '(#[\p{L}\p{N}-.]+#)?$'
-          scope: entity.name.constant
-          pop: true
 
   action:
     - match: '^!'
@@ -103,6 +111,7 @@ contexts:
   main:
     - include: title
     - include: scene
+    - include: scene_number
     - include: action
     - include: note
     - include: boneyard
