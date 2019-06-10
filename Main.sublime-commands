@@ -1,7 +1,7 @@
 [
 	{
 		"caption": "August: List Scenes",
-		"command": "august_print"
+		"command": "august_list_scenes"
 	},
 	{
 		"caption": "August: Add Scene Numbers",

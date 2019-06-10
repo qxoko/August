@@ -8,14 +8,12 @@ def create_buffer(context):
 	panel.set_scratch(True)
 	return panel
 
-class AugustPrintCommand(sublime_plugin.TextCommand):
+class AugustListScenesCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		source_file = self.view.window().active_view()
 
 		output_file = create_buffer(self)
 		output_file.set_name('Scene List')
-
-		# output_file.set_syntax_file('Packages/August/August.sublime-syntax')
 		# output_file.set_read_only(True)
 
 		title = 'SCENE LIST: '
