@@ -98,10 +98,10 @@ August mirrors the scope conventions of Fountainhead, with a few additions.  Bel
 fountain:       text.fountain
 action:         foreground
 boneyard:       comment
-dialogue:       dialogue                        (defunct, see Known Issues)
+dialogue:       dialogue
 lyrics:         lyrics
 character:      string
-parenthetical:  entity.other.inherited-class    (defunct, see Known Issues)
+parenthetical:  entity.other.inherited-class
 note:           variable.parameter
 scene:          entity.name.function
 section:        entity.name.filename
@@ -137,4 +137,4 @@ Brings typewriter-style scrolling to your long writing sessions.  Use `"typewrit
 ## Known Issues
 
 + ~~scene number highlighting~~
-+ parenthetical/dialogue scopes currently ommitted from syntax file due to sublime's magical one-line at a time system causing all kinds of headaches for an idiot like me.
++ ~~parenthetical/dialogue scopes currently ommitted from syntax file~~
