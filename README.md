@@ -2,7 +2,7 @@
 
 August is _the_ Fountain package for Sublime Text.  It brings useful writing tools, offers a simple, customisable and distraction-free workflow, and leaves some of the more annoying "features" of other markup packages on the cutting room floor.
 
-If you're a Fountainhead user, or have written themes for it, you'll be pleased to know August's syntax definition is fully compatible.
+If you're a Fountainhead user, or have written themes for it, you'll be pleased to know August's syntax definition is fully compatible, with a [couple of additions](#syntax-reference).
 
 August's installation, syntax names and settings files all use the namespace `August`, to (mostly) prevent conflicts with other or older packages you might want to keep using.
 
@@ -14,15 +14,15 @@ This package is considered **alpha** and does not yet have an official release. 
 
 + `August: Merge Files`
 
-  Merges a list of files into a single master file.  (See [Mountain Overview](#a-typical-mountain-workflow)).
+  Merges a list of files into a single master file.  (See [Split/Merge Overview](#a-split/merge-workflow)).
 
 + `August: Split Files`
 
-  Breaks a master file back down into its constituent files. (See [Mountain Overview](#a-typical-mountain-workflow)).
+  Breaks a master file back down into its constituent files. (See [Split/Merge Overview](#a-split/merge-workflow)).
 
 + `August: Add Scene Numbers`
 
-  Adds `#1#` formatted scene numbers to every scene heading, *replacing any existing ones*.  This is considered a finishing step and only provides integer numbering.
+  Adds `#1#` formatted scene numbers to every scene heading, *replacing any existing ones*.  This only provides integer numbering.
 
 + `August: Remove Scene Numbers`
 
@@ -30,7 +30,7 @@ This package is considered **alpha** and does not yet have an official release. 
 
 + `August: List Scenes`
 
-  Creates a list of scenes from the current file in a read-only buffer.
+  Creates a list of scene headings from the current file in a scratch buffer.  Useful for getting a topdown view of a long file.
 
 + `August: Show/Hide Boneyard`
 
@@ -38,13 +38,13 @@ This package is considered **alpha** and does not yet have an official release. 
 
 ## Tools
 
-#### Mountain
+#### Split/Merge
 
-August brings the power of [Mountain](https://github.com/mjrusso/mountain) to Sublime.  Mountain is a split/merge tool that provides a convenient method of writing Fountain screenplays in multiple files and directories, then merging them into a single file only when absolutely necessary.  It was designed to avoid some of the key pitfalls that most text editors, even Fountain-focused ones, fall into by expecting everyone to write their entire screenplay in a single, thousands-of-lines-long file.  Combined with Git or Mercurial, screenplay revisions, scene-locking and big-picture editing all become a piece of cake.
+Based on [Mountain](https://github.com/mjrusso/mountain), Split/Merge brings multi-file screenplays to Sublime.  It provides a convenient method of writing Fountain screenplays in multiple files and directories, then merging them into a single file only when absolutely necessary.  It was designed to avoid some of the key pitfalls that most text editors, even Fountain-focused ones, fall into by expecting everyone to write their entire screenplay in a single, thousands-of-lines-long file.  Combined with source control, screenplay revisions, scene-locking and big-picture editing all become a piece of cake.
 
-Mountain achieves this with the use of two keywords, `include` and `reference`.  These are referred to as _directives_ by Mountain proper, and are explained in context in the next section.
+The workflow is controlled entirely with the use of two keywords, `include` and `reference`.  These are referred to as _directives_ by Mountain, and are explained in context in the next section.
 
-#### A Typical Mountain Workflow
+#### A Split/Merge Workflow
 
 Create a manifest file at the top level of your screenplay's directory.  You'll need to use a `.fountain` or `.ftn` file extension.  The following example references two scene files stored in folders `act1` and `act3` alongside the manifest.
 
@@ -63,7 +63,7 @@ author: John August
 [[include: act3/post_credits.fountain]]
 ```
 
-With the manifest focused, open the command palette and use
+With the manifest focused, open the command palette and use:
 
 + `August: Merge File`
 
@@ -87,10 +87,34 @@ You will again be prompted for a name.  This will set the manifest filename.  It
 
 You can use this to update the original scene files with edits made in the master file, rebuild your project's writing workspace on another computer, or even convert an existing single-file project into more manageable chunks.
 
-## Known Bugs
+## Syntax Reference
 
-+ ~~Scene number highlighting~~
+August mirrors the scope conventions of Fountainhead, with a few additions.  Below is a comprehensive list of all scopes used, for reference when creating highlighting support.
 
+##### Fountainhead
+
+```
+
+fountain:       text.fountain
+action:         foreground
+boneyard:       comment
+dialogue:       dialogue                        (defunct, see Known Issues)
+lyrics:         lyrics
+character:      string
+parenthetical:  entity.other.inherited-class    (defunct, see Known Issues)
+note:           variable.parameter
+scene:          entity.name.function
+section:        entity.name.filename
+synopses:       meta.diff
+pagebreak:      support.function
+title_page:     constant.numeric
+center:         foreground
+transition:     entity.name.tag
+```
+##### Added by August
+```
+scene_numbers:  entity.name.constant
+```
 ## Recommended Packages
 
 ##### Mountain
@@ -104,3 +128,13 @@ The original Mountain was designed as a command-line tool.  If you like the Moun
 [Package Control](https://packagecontrol.io/packages/Typewriter) | [GitHub](https://github.com/alehandrof/Typewriter)
 
 Brings typewriter-style scrolling to your long writing sessions.  Use `"typewriter_mode_scrolling": true` in your `August.sublime-settings` file to enable it just for Fountain files, or toggle it from the command palette.
+
+
+## Todo
+
++ macros for auto-capitalisation
+
+## Known Issues
+
++ ~~scene number highlighting~~
++ parenthetical/dialogue scopes currently ommitted from syntax file due to sublime's magical one-line at a time system causing all kinds of headaches for an idiot like me.
