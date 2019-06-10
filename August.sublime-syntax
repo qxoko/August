@@ -14,7 +14,7 @@ contexts:
           pop: true
 
   scene:
-    - match: '^(?i)(\.|int\.?|ext\.?|est\.?|i/e\.?|int\.?/ext\.?|flashback\.?)[\p{L}\p{N}/\-\(\) .]+'
+    - match: ^(?i)(\.(?!\.)|int\.?|ext\.?|est\.?|i/e\.?|int\.?/ext\.?|flashback\.?)[\p{L}\p{N}/\-\(\)' .]+
       scope: entity.name.function
       push:
         - match: '(#[\p{L}\p{N}-.]+#)?$'
@@ -42,14 +42,11 @@ contexts:
           pop: true
 
   characters:
-    - match: '^\s*[\p{Lu}\p{N} ]+$'
+    - match: ^\s*[\p{Lu}\p{N}\(\)' ]+$
       scope: string
-      push:
-        - meta_scope: entity.other.inherited-class # parentheticals
-        - include: dialogue
-
-  # parentheticals
-  # - match: '^\s*\(.*\)$'
+      # push:
+        # - meta_scope: entity.other.inherited-class # parentheticals
+        # - include: dialogue
 
   dialogue:
     - match: '^\s*[^\(\)]+$'
@@ -77,7 +74,7 @@ contexts:
       scope: meta.diff
 
   pagebreak:
-    - match: '---$'
+    - match: '===$'
       scope: support.function
 
   markup:

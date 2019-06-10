@@ -13,4 +13,5 @@
 	"spell_check": true,
 	"trim_automatic_white_space": true,
 	"line_numbers": false,
+	"auto_capitalise_scenes": true,
 }
