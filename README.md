@@ -89,7 +89,7 @@ You can use this to update the original scene files with edits made in the maste
 
 ## Known Bugs
 
-+ Remove
++ ~~Scene number highlighting~~
 
 ## Recommended Packages
 

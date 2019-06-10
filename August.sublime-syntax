@@ -20,7 +20,7 @@ contexts:
   # yes it's pedantic.  i know.
 
   scene_number:
-    - match: ^(?i)((\.(?!\.)|INT\.?|EXT\.?|EST\.?|I/E\.?|INT\.?/EXT\.?|FLASHBACK\.?)[\p{L}\p{N}/\-\(\)'\. ]*)( )(\#\d*\#)$
+    - match: ^(?i)((\.(?!\.)|INT\.?|EXT\.?|EST\.?|I/E\.?|INT\.?/EXT\.?|FLASHBACK\.?)[\p{L}\p{N}/\-\(\)'\. ]*)( )(\#.*\#)$
       captures:
         1: entity.name.function
         4: entity.name.constant
@@ -52,9 +52,6 @@ contexts:
   characters:
     - match: ^\s*[\p{Lu}\p{N}\(\)' ]+$
       scope: string
-      # push:
-        # - meta_scope: entity.other.inherited-class # parentheticals
-        # - include: dialogue
 
   dialogue:
     - match: '^\s*[^\(\)]+$'
