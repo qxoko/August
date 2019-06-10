@@ -20,13 +20,13 @@ contexts:
   # yes it's pedantic.  i know.
 
   scene_number:
-    - match: ^(?i)((\.(?!\.)|INT\.?|EXT\.?|EST\.?|I/E\.?|INT\.?/EXT\.?|FLASHBACK\.?)[\p{L}\p{N}/\-\(\)'\. ]*)( )(\#.*\#)$
+    - match: ^(?i)((\.(?!\.)|int\.?|ext\.?|est\.?|i/e\.?|int\.?/ext\.?|flashback\.?)[\p{L}\p{N}/\-\(\)'\. ]*)( )(\#.*\#)$
       captures:
         1: entity.name.function
         4: entity.name.constant
 
   scene:
-    - match: ^(?i)((\.(?!\.)|INT\.?|EXT\.?|EST\.?|I/E\.?|INT\.?/EXT\.?|FLASHBACK\.?)[\p{L}\p{N}/\-\(\)'\. ]*)$
+    - match: ^(?i)((\.(?!\.)|int\.?|ext\.?|est\.?|i/e\.?|int\.?/ext\.?|flashback\.?)[\p{L}\p{N}/\-\(\)'\. ]*)$
       scope: entity.name.function
 
   action:
@@ -49,16 +49,26 @@ contexts:
         - match: '\*/'
           pop: true
 
-  # includes dialogue and parentheticals
+  # this covers the dialogue pop as well
+  parentheticals:
+    - match: ^\(.+\)$
+      scope: entity.other.inherited-class
+    - match: ^$
+      pop: true
+
   characters:
     - match: ^\s*[\p{Lu}\p{N}\(\)' ]+$
       scope: string
       push:
         - meta_scope: dialogue
-        - match: ^\(.+\)$
-          scope: entity.other.inherited-class
-        - match: ^$
-          pop: true
+        - include: parentheticals
+
+  characters_forced:
+    - match: ^\s*\@.+$
+      scope: string
+      push:
+        - meta_scope: dialogue
+        - include: parentheticals
 
   centered:
     - match: '^\s*\>.+\<$'
@@ -115,6 +125,7 @@ contexts:
     - include: note
     - include: boneyard
     - include: characters
+    - include: characters_forced
     - include: centered
     - include: transition
     - include: lyrics
