@@ -150,7 +150,14 @@ The original Mountain was designed as a command-line tool.  If you like the Moun
 
 [GitHub](https://github.com/wraparound)
 
-A command line tool for exporting screenplays to PDF and HTML.
+A command line tool for exporting screenplays to PDF and HTML.  August aims to support Wrap entirely.  See status here:
+
++ build system
++ act syntax
++ multi-language syntax
++ ~~`scene.` syntax~~
++ ~~additional title page tags~~
++ `Mc` and `Mac` case ignore in characters
 
 ##### Typewriter
 
@@ -158,12 +165,8 @@ A command line tool for exporting screenplays to PDF and HTML.
 
 Brings typewriter-style scrolling to your long writing sessions.  Use `"typewriter_mode_scrolling": true` in your `August.sublime-settings` file to enable it just for Fountain files, or toggle it from the command palette.
 
-
-## Todo
-
-+ ~~macros for auto-capitalisation~~
-
 ## Known Issues
 
-+ ~~scene number highlighting~~
-+ ~~parenthetical/dialogue scopes currently ommitted from syntax file~~
++ markup capture does not nest
++ markup will act on text even if there is no closing element [violating line-jumping rules](https://fountain.io/syntax#section-emphasis)
++ [character extensions](https://fountain.io/syntax#section-character) are not currently able to be lowercase and still highlight correctly.  Can still be used with the `@` force syntax
