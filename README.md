@@ -131,12 +131,12 @@ section:        entity.name.filename
 synopses:       meta.diff
 pagebreak:      support.function
 title_page:     constant.numeric
-center:         foreground
 transition:     entity.name.tag
 ```
 ##### Added by August
 ```
 scene_numbers:  entity.name.constant
+center:         centered (foreground in Fountainhead)
 ```
 ## Recommended Packages
 
