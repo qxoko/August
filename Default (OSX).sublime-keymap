@@ -1,0 +1,24 @@
+[
+	{
+		"keys": ["enter"], "command": "run_macro_file",
+		"args": {
+			"file": "Packages/August/macro/cap_single_line.sublime-macro"
+		},
+		"context": [
+			{ "key": "setting.auto_capitalise_characters", "operator": "equal", "operand": true},
+			{ "key": "selector", "operator": "equal", "operand": "text.fountain", "match_all": true },
+			{ "key": "preceding_text", "operator": "regex_match", "operand": "^@?[\\w\\d ]+$", "match_all": true },
+		]
+	},
+	{
+		"keys": ["enter"], "command": "run_macro_file",
+		"args": {
+			"file": "Packages/August/macro/cap_double_line.sublime-macro"
+		},
+		"context": [
+			{ "key": "setting.auto_capitalise_scenes", "operator": "equal", "operand": true},
+			{ "key": "selector", "operator": "equal", "operand": "text.fountain", "match_all": true },
+			{ "key": "preceding_text", "operator": "regex_match", "operand": "^(?i)(\\.(?!\\.)|int\\.|ext\\.|est\\.|i/e\\.|int\\./ext\\.|flashback\\.).+$", "match_all": true },
+		]
+	},
+]
