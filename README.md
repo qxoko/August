@@ -36,6 +36,30 @@ This package is considered **alpha** and does not yet have an official release. 
 
   Hides or reveals (by folding) all  `/* boneyard */` regions in the current file.
 
+## Automatic Formatting
+
+Certain pieces of syntax will be automatically capitalised and appropriate newlines inserted when pressing `return`.  These include:
+
++ Scene headings
++ Character names in dialogue
++ Transitions
+
+If you find these distracting, or counter to your workflow, they can be individually disabled by adding
+
+```json
+"auto_cap_scenes": false,
+"auto_cap_characters": false,
+"auto_cap_transitions": false,
+```
+
+to your `User/August.sublime-settings` file.  All are enabled by default upon installation.
+
+##### A Quick Note on Character Auto Formatting
+
+Character names are defined by Fountain syntax as being punctuation-less UPPERCASE WORDS on a single line.  A macro to auto-capitalise them is therefore a bit shaky, because it requires its own result to recognise which lines to act on in the first place.  August's character macro works around this by checking for an _absence_ of punctuation on a given line, meaning that _some_ false positives may occur during normal writing.  In my experience, they are extremely rare (as rare as I could make them), but they can still occur.  The `@` force syntax is always honoured correctly.
+
+If you find these false positives distracting, disable `auto_cap_characters`.
+
 ## Tools
 
 #### Split/Merge
