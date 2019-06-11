@@ -20,13 +20,13 @@ contexts:
   # yes it's pedantic.  i know.
 
   scene_number:
-    - match: ^(?i)((\.(?!\.)|int\.?|ext\.?|est\.?|i/e\.?|int\.?/ext\.?|flashback\.?)[\p{L}\p{N}/\-\(\)'\. ]*)( )(\#.*\#)$
+    - match: ^(?i)((\.(?!\.)|int\.|ext\.|est\.|i/e\.|int\./ext\.|flashback\.)[\p{L}\p{N}/\-\(\)'\. ]*)( )(\#.*\#)$
       captures:
         1: entity.name.function
         4: entity.name.constant
 
   scene:
-    - match: ^(?i)((\.(?!\.)|int\.?|ext\.?|est\.?|i/e\.?|int\.?/ext\.?|flashback\.?)[\p{L}\p{N}/\-\(\)'\. ]*)$
+    - match: ^(?i)((\.(?!\.)|int\.|ext\.|est\.|i/e\.|int\./ext\.|flashback\.)[\p{L}\p{N}/\-\(\)'\. ]*)$
       scope: entity.name.function
 
   action:
