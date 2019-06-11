@@ -2,11 +2,12 @@
 ---
 file_extensions:
   - fountain
+  - ftn
 scope: text.fountain
 
 contexts:
   title:
-    - match: '^(?i)(format|title|credit|authors?|source|draft date|contact|copyright|notes):'
+    - match: '^(?i)(format|title|credit|authors?|source|draft date|contact|copyright|notes|language|contdtag|moretag):'
       scope: constant.numeric
       push:
         - meta_scope: constant.numeric
@@ -14,19 +15,19 @@ contexts:
           pop: true
 
   # this seems odd at first, but there are two regexes for
-  # scenes so that in themes with inverse colours for
-  # scenes (see qxoko/CircusFreak), the blank space between
+  # scenes so that in themes with inverse colours
+  # (see qxoko/CircusFreak), the blank space between
   # the number and the scene heading is honoured.
   # yes it's pedantic.  i know.
 
   scene_number:
-    - match: ^(?i)((\.(?!\.)|int\.|ext\.|est\.|i/e\.|int\./ext\.|flashback\.)[\p{L}\p{N}/\-\(\)'\. ]*)( )(\#.*\#)$
+    - match: ^(?i)((\.(?!\.)|scene\.|int\.|ext\.|est\.|i/e\.|int\.?/ext\.?|flashback\.)[\p{L}\p{N}/\-\(\)'\. ]*)( )(\#.*\#)$
       captures:
         1: entity.name.function
         4: entity.name.constant
 
   scene:
-    - match: ^(?i)((\.(?!\.)|int\.|ext\.|est\.|i/e\.|int\./ext\.|flashback\.)[\p{L}\p{N}/\-\(\)'\. ]*)$
+    - match: ^(?i)((\.(?!\.)|scene\.|int\.|ext\.|est\.|i/e\.|int\.?/ext\.?|flashback\.)[\p{L}\p{N}/\-\(\)'\. ]*)$
       scope: entity.name.function
 
   action:
@@ -57,11 +58,13 @@ contexts:
       pop: true
 
   characters:
-    - match: ^\s*[\p{Lu}\p{N}\(\)\.' ]+$
+    - match: ^\s*[\p{Lu}\p{N}\(\)\.'\^ ]+$
       scope: string
       push:
         - meta_scope: dialogue
         - include: parentheticals
+        - include: markup
+        - include: note
 
   characters_forced:
     - match: ^\s*\@.+$
@@ -69,7 +72,10 @@ contexts:
       push:
         - meta_scope: dialogue
         - include: parentheticals
+        - include: markup
+        - include: note
 
+  # @todo markup support here
   centered:
     - match: '^\s*\>.+\<$'
       scope: centered
@@ -94,6 +100,8 @@ contexts:
     - match: '===$'
       scope: support.function
 
+  # @todo switch to balanced pairs
+  # nest syntaxes together correctly
   markup:
     - match: '\*\*\*'
       scope: markup.hidden
@@ -102,6 +110,8 @@ contexts:
         - match: '\*\*\*'
           scope: markup.hidden
           pop: true
+        - match: ^$
+          pop: true
     - match: '\*\*'
       scope: markup.hidden
       push:
@@ -109,12 +119,24 @@ contexts:
         - match: '\*\*'
           scope: markup.hidden
           pop: true
+        - match: ^$
+          pop: true
     - match: '\*'
       scope: markup.hidden
       push:
         - meta_scope: message.error
         - match: '\*'
           scope: markup.hidden
+          pop: true
+        - match: ^$
+          pop: true
+    - match: '\_'
+      scope: markup.hidden
+      push:
+        - match: '\_'
+          scope: markup.hidden
+          pop: true
+        - match: ^$
           pop: true
 
   main:

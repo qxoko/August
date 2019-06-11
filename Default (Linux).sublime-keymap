@@ -20,7 +20,7 @@
 		"context": [
 			{ "key": "setting.auto_cap_scenes", "operator": "equal", "operand": true},
 			{ "key": "selector", "operator": "equal", "operand": "text.fountain", "match_all": true },
-			{ "key": "preceding_text", "operator": "regex_match", "operand": "^(?i)(\\.(?!\\.)|int\\.|ext\\.|est\\.|i/e\\.|int\\./ext\\.|flashback\\.).+$", "match_all": true },
+			{ "key": "preceding_text", "operator": "regex_match", "operand": "^(?i)(\\.(?!\\.)|int\\.|ext\\.|est\\.|i/e\\.|int\\.?/ext\\.?|flashback\\.).+$", "match_all": true },
 		]
 	},
 	// transition auto cap
