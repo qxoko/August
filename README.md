@@ -118,7 +118,6 @@ August mirrors the scope conventions of Fountainhead, with a few additions.  Bel
 ##### Fountainhead
 
 ```
-
 fountain:       text.fountain
 action:         foreground
 boneyard:       comment
@@ -147,6 +146,12 @@ scene_numbers:  entity.name.constant
 
 The original Mountain was designed as a command-line tool.  If you like the Mountain workflow and want it outside of Sublime, this is the place to get it.
 
+##### Wrap
+
+[GitHub](https://github.com/wraparound)
+
+A command line tool for exporting screenplays to PDF and HTML.
+
 ##### Typewriter
 
 [Package Control](https://packagecontrol.io/packages/Typewriter) | [GitHub](https://github.com/alehandrof/Typewriter)
@@ -156,7 +161,7 @@ Brings typewriter-style scrolling to your long writing sessions.  Use `"typewrit
 
 ## Todo
 
-+ macros for auto-capitalisation
++ ~~macros for auto-capitalisation~~
 
 ## Known Issues
 
