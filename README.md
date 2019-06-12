@@ -26,6 +26,8 @@ This package is considered **alpha** and does not yet have an official release. 
 
   Builds a PDF from the focused file.  The PDF will be saved alongside the Fountain file.  Can also be triggered with `ctrl+B` or `cmd+B` if the current build system is set to `August`.
 
+  The build system currently builds straight to `--production` by default, the Wrap flag that includes scene numbers.
+
 + `August: Add Scene Numbers`
 
   Adds `#1#` formatted scene numbers to every scene heading, *replacing any existing ones*.  This only provides integer numbering.
@@ -158,10 +160,10 @@ The original Mountain was designed as a command-line tool.  If you like the Moun
 
 A command line tool for exporting screenplays to PDF and HTML.  August aims to support Wrap entirely.  See status here:
 
++ multi-language support
 + ~~build system~~
 + ~~scene. syntax~~
 + ~~additional title page tags~~
-+ multi-language support
 
 ##### Typewriter
 
