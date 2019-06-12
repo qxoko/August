@@ -16,4 +16,5 @@
 	"auto_cap_scenes": true,
 	"auto_cap_characters": true,
 	"auto_cap_transitions": true,
+	"show_panel_on_build": false,
 }

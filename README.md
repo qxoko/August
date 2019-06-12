@@ -4,6 +4,8 @@ August is _the_ Fountain package for Sublime Text.  It brings useful writing too
 
 If you're a Fountainhead user, or have written themes for it, you'll be pleased to know August's syntax definition is fully compatible, with a [couple of additions](#syntax-reference).
 
+All features, including external ones such as Wrap support, are tested and work correctly on macOS, Windows and Linux.
+
 August's installation, syntax names and settings files all use the namespace `August`, to (mostly) prevent conflicts with other or older packages you might want to keep using.
 
 #### ⚠️ WARNING
@@ -19,6 +21,10 @@ This package is considered **alpha** and does not yet have an official release. 
 + `August: Split Files`
 
   Breaks a master file back down into its constituent files. (See [Split/Merge Workflow](#a-splitmerge-workflow)).
+
++ `August: Make PDF` ⚠️ requires [Wrap](https://github.com/wraparound/wrap)
+
+  Builds a PDF from the focused file.  The PDF will be saved alongside the Fountain file.  Can also be triggered with `ctrl+B` or `cmd+B` if the current build system is set to `August`.
 
 + `August: Add Scene Numbers`
 
@@ -152,12 +158,10 @@ The original Mountain was designed as a command-line tool.  If you like the Moun
 
 A command line tool for exporting screenplays to PDF and HTML.  August aims to support Wrap entirely.  See status here:
 
-+ build system
-+ act syntax
-+ multi-language syntax
-+ ~~`scene.` syntax~~
++ ~~build system~~
++ ~~scene. syntax~~
 + ~~additional title page tags~~
-+ `Mc` and `Mac` case ignore in characters
++ multi-language support
 
 ##### Typewriter
 
@@ -167,6 +171,6 @@ Brings typewriter-style scrolling to your long writing sessions.  Use `"typewrit
 
 ## Known Issues
 
-+ markup capture does not nest
++ markup syntax does not nest
 + markup will act on text even if there is no closing element [violating line-jumping rules](https://fountain.io/syntax#section-emphasis)
 + [character extensions](https://fountain.io/syntax#section-character) are not currently able to be lowercase and still highlight correctly.  Can still be used with the `@` force syntax

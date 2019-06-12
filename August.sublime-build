@@ -1,0 +1,5 @@
+{
+	"selector": "text.fountain",
+	"file_patterns": ["*.fountain", "*.ftn"],
+	"shell_cmd": "wrap pdf -p \"$file\" >> \"$file_path/$file_base_name\".pdf"
+}

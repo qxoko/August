@@ -1,5 +1,12 @@
 [
 	{
+		"caption": "August: Make PDF",
+		"command": "build",
+		"args": {
+			"file": "Packages/August/August.sublime-build",
+		},
+	},
+	{
 		"caption": "August: List Scenes",
 		"command": "august_list_scenes"
 	},
