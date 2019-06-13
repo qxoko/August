@@ -144,8 +144,11 @@ transition:     entity.name.tag
 ##### Added by August
 ```
 scene_numbers:  entity.name.constant
-center:         centered (foreground in Fountainhead)
+center:         centered (foreground in FH)
+note_keywords:  support.constant
+emphasis_chars: markup.other
 ```
+
 ## Recommended Packages
 
 ##### Mountain

@@ -19,7 +19,6 @@ contexts:
   # (see qxoko/CircusFreak), the blank space between
   # the number and the scene heading is honoured.
   # yes it's pedantic.  i know.
-
   scene_number:
     - match: ^(?i)((\.(?!\.)|scene\.|int\.|ext\.|est\.|i/e\.|int\.?/ext\.?|flashback\.)[\p{L}\p{N}/\-\(\)'\. ]*)( )(\#.*\#)$
       captures:
@@ -39,7 +38,10 @@ contexts:
       scope: variable.parameter.begin
       push:
         - meta_scope: variable.parameter.end
+        - match: \b(include|reference|todo)\b
+          scope: support.constant
         - match: '\]\]'
+          scope: variable.parameter.end
           pop: true
 
   boneyard:
@@ -104,37 +106,37 @@ contexts:
   # nest syntaxes together correctly
   markup:
     - match: '\*\*\*'
-      scope: markup.hidden
+      scope: markup.other
       push:
         - meta_scope: markup.inserted
         - match: '\*\*\*'
-          scope: markup.hidden
+          scope: markup.other
           pop: true
         - match: ^$
           pop: true
     - match: '\*\*'
-      scope: markup.hidden
+      scope: markup.other
       push:
         - meta_scope: markup.changed
         - match: '\*\*'
-          scope: markup.hidden
+          scope: markup.other
           pop: true
         - match: ^$
           pop: true
     - match: '\*'
-      scope: markup.hidden
+      scope: markup.other
       push:
         - meta_scope: message.error
         - match: '\*'
-          scope: markup.hidden
+          scope: markup.other
           pop: true
         - match: ^$
           pop: true
     - match: '\_'
-      scope: markup.hidden
+      scope: markup.other
       push:
         - match: '\_'
-          scope: markup.hidden
+          scope: markup.other
           pop: true
         - match: ^$
           pop: true
