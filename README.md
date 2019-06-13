@@ -2,75 +2,64 @@
 
 August is _the_ Fountain package for Sublime Text.  It brings useful writing tools, offers a simple, customisable and distraction-free workflow, and leaves some of the more annoying "features" of other markup packages on the cutting room floor.
 
+## Features at a Glance
+
+August provides...
+
++ An easy to use multi-file screenplay workflow
++ PDF formatting and export via [Wrap](https://github.com/wraparound/wrap)
++ Bulk management for scene numbers
+
 If you're a Fountainhead user, or have written themes for it, you'll be pleased to know August's syntax definition is fully compatible, with a [couple of additions](#syntax-reference).
-
-All features, including external ones such as Wrap support, are tested and work correctly on macOS, Windows and Linux.
-
-August's installation, syntax names and settings files all use the namespace `August`, to (mostly) prevent conflicts with other or older packages you might want to keep using.
 
 #### ⚠️ WARNING
 
-This package is considered **alpha** and does not yet have an official release.  There are bugs, there are issues and there are missing features.  Use at your own risk.
+All features, including external ones such as Wrap support, are tested on macOS, Windows and Linux.
 
-## Command Shortlist
+However, this package is considered **alpha** and does not yet have an official release.  There are bugs, there are issues and there are missing features.  Use at your own risk.
 
-+ `August: Merge Files`
+## Contents
 
-  Merges a list of files into a single master file.  (See [Split/Merge Workflow](#a-splitmerge-workflow)).
++ [Command Reference](#command-reference)
++ [Split Merge](#splitmerge)
++ [Auto Formatting](#auto-formatting)
++ [Scope Reference](#scope-reference)
++ [Recommended Packages](#recommended-packages)
++ [Known Issues](#known-issues)
 
-+ `August: Split Files`
+## Command Reference
 
-  Breaks a master file back down into its constituent files. (See [Split/Merge Workflow](#a-splitmerge-workflow)).
+##### `August: Merge Files`
 
-+ `August: Make PDF` ⚠️ requires [Wrap](https://github.com/wraparound/wrap)
+Merges a list of files into a single master file.  (See [Split/Merge Workflow](#a-splitmerge-workflow)).
 
-  Builds a PDF from the focused file.  The PDF will be saved alongside the Fountain file.  Can also be triggered with `ctrl+B` or `cmd+B` if the current build system is set to `August`.
+##### `August: Split Files`
 
-  The build system currently builds straight to `--production` by default, the Wrap flag that includes scene numbers.
+Breaks a master file back down into its constituent files. (See [Split/Merge Workflow](#a-splitmerge-workflow)).
 
-+ `August: Add Scene Numbers`
+##### `August: Make PDF`
 
-  Adds `#1#` formatted scene numbers to every scene heading, *replacing any existing ones*.  This only provides integer numbering.
+⚠️ Requires [Wrap](https://github.com/wraparound/wrap).  Saves a PDF from the focused file alongside it.  Can also be triggered with `ctrl+B` or `cmd+B` if the current build system is set to `August` (The build system should latch onto any open Fountain files by default).
 
-+ `August: Remove Scene Numbers`
+The build system includes the `--production` flag by default to [avoid any confusion](https://github.com/Wraparound/wrap/wiki/FAQ#when-i-use-wrap-there-are-no-scene-numbers).
 
-  Strips out any `#1#` scene numbers from the current file.  The removal command (and syntax highlighting) will catch all [valid scene numbers](https://fountain.io/syntax), such as `#1#`, `#1-A#`, `#1.A-A#`.
+##### `August: Add Scene Numbers`
 
-+ `August: List Scenes`
+Adds `#1#` formatted scene numbers to every scene heading, *replacing any existing ones*.  This only provides integer numbering.
 
-  Creates a list of scene headings from the current file in a scratch buffer.  Useful for getting a topdown view of a long file.
+##### `August: Remove Scene Numbers`
 
-+ `August: Show/Hide Boneyard`
+Strips out any `#1#` scene numbers from the current file.  The removal command (and syntax highlighting) will catch all [valid scene numbers](https://fountain.io/syntax), such as `#1#`, `#1-A#`, `#1.A-A#`.
 
-  Hides or reveals (by folding) all  `/* boneyard */` regions in the current file.
+##### `August: List Scenes`
 
-## Automatic Formatting
+Creates a list of scene headings from the current file in a scratch buffer.  Useful for getting a topdown view of a long file.
 
-Certain pieces of syntax will be automatically capitalised and appropriate newlines inserted when pressing `return`.  These include:
+##### `August: Show/Hide Boneyard`
 
-+ Scene headings
-+ Character names in dialogue
-+ Transitions
+Hides or reveals (by folding) all  `/* boneyard */` regions in the current file.
 
-If you find these distracting, or counter to your workflow, they can be individually disabled by adding
-
-```json
-"auto_cap_scenes": false,
-"auto_cap_characters": false,
-"auto_cap_transitions": false,
-```
-
-to your `User/August.sublime-settings` file.  All are enabled by default upon installation.
-
-##### A Quick Note on Character Auto Formatting
-
-Character names are defined by Fountain syntax as being punctuation-less UPPERCASE WORDS on a single line.  A macro to auto-capitalise them is therefore a bit shaky, because it requires its own result to recognise which lines to act on in the first place.  August's character macro works around this by checking for an _absence_ of punctuation on a given line, meaning that _some_ false positives may occur during normal writing.  In my experience, they are extremely rare (as rare as I could make them), but they can still occur.  The `@` force syntax is always honoured correctly.
-
-If you find these false positives distracting, disable `auto_cap_characters`.
-
-## Tools
-
-#### Split/Merge
+## Split/Merge
 
 Based on [Mountain](https://github.com/mjrusso/mountain), Split/Merge brings multi-file screenplays to Sublime.  It provides a convenient method of writing Fountain screenplays in multiple files and directories, then merging them into a single file only when absolutely necessary.  It was designed to avoid some of the key pitfalls that most text editors, even Fountain-focused ones, fall into by expecting everyone to write their entire screenplay in a single, thousands-of-lines-long file.  Combined with source control, screenplay revisions, scene-locking and big-picture editing all become a piece of cake.
 
@@ -119,11 +108,29 @@ You will again be prompted for a name.  This will set the manifest filename.  It
 
 You can use this to update the original scene files with edits made in the master file, rebuild your project's writing workspace on another computer, or even convert an existing single-file project into more manageable chunks.
 
-## Syntax Reference
+## Auto Formatting
+
+Some syntax will be automatically capitalised and appropriate newlines inserted when pressing `return`.  These include:
+
++ Scene headings
++ Character names
++ Transitions
+
+You can enable or disable them individually in your `User/August.sublime-settings` file.  All are enabled by default upon installation.
+
+```json
+"auto_cap_scenes": false,
+"auto_cap_characters": false,
+"auto_cap_transitions": false,
+```
+
+FYI: Some false positives may occur, where certain words will be undesirably capitalised.  These are always caused by the `auto_cap_characters` setting, and disabling it will fix the issue.  Chances are, you will never see one, as they are incredibly rare, but nearly impossible to completely eradicate due to restrictions in Sublime Text's macro engine.
+
+## Scope Reference
 
 August mirrors the scope conventions of Fountainhead, with a few additions.  Below is a comprehensive list of all scopes used, for reference when creating highlighting support.
 
-##### Fountainhead
+##### Original Fountainhead
 
 ```
 fountain:       text.fountain
@@ -151,12 +158,6 @@ emphasis_chars: markup.other
 
 ## Recommended Packages
 
-##### Mountain
-
-[GitHub](https://github.com/mjrusso/mountain)
-
-The original Mountain was designed as a command-line tool.  If you like the Mountain workflow and want it outside of Sublime, this is the place to get it.
-
 ##### Wrap
 
 [GitHub](https://github.com/wraparound)
@@ -167,6 +168,12 @@ A command line tool for exporting screenplays to PDF and HTML.  August aims to s
 + ~~build system~~
 + ~~scene. syntax~~
 + ~~additional title page tags~~
+
+##### Mountain
+
+[GitHub](https://github.com/mjrusso/mountain)
+
+The original Mountain was designed as a command-line tool.  If you like the Mountain workflow and want it outside of Sublime, this is the place to get it.
 
 ##### Typewriter
 
