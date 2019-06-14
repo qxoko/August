@@ -41,6 +41,8 @@ contexts:
         # mountain directives
         - match: \b(include|reference)\b(?=:)
           scope: support.constant
+        - match: (/reference)
+          scope: support.constant
         # tags
         - match: (?i)@\b(todo|incomplete|fixme)\b
           scope: support.constant
