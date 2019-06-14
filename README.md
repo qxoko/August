@@ -6,7 +6,7 @@ August is _the_ Fountain package for Sublime Text.  It brings useful writing too
 
 August provides...
 
-+ An easy to use multi-file screenplay workflow
++ Multi-file screenplay workflow
 + PDF formatting and export via [Wrap](https://github.com/wraparound/wrap)
 + Bulk management for scene numbers
 
@@ -152,8 +152,10 @@ transition:     entity.name.tag
 ```
 scene_numbers:  entity.name.constant
 center:         centered (foreground in FH)
-note_keywords:  support.constant
 emphasis_chars: markup.other
+note_directive: markup.other
+note_keywords:  support.constant
+note_complete:  storage
 ```
 
 ## Recommended Packages
