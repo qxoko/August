@@ -39,7 +39,7 @@ contexts:
       push:
         - meta_scope: variable.parameter.end
         # mountain directives
-        - match: \b(include|reference)\b(?=:)
+        - match: \b(include|reference)\b(?=:\s+)
           scope: support.constant
         - match: (/reference)
           scope: support.constant
