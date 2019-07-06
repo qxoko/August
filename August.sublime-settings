@@ -10,7 +10,7 @@
 	"gutter": false,
 	"highlight_line": false,
 	"draw_centered": true,
-	"spell_check": true,
+	"spell_check": false,
 	"trim_automatic_white_space": true,
 	"line_numbers": false,
 	"auto_cap_scenes": true,
