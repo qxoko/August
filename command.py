@@ -6,6 +6,7 @@ from . import scope
 def create_buffer(context):
 	panel = context.view.window().new_file()
 	panel.set_scratch(True)
+
 	return panel
 
 class AugustListScenesCommand(sublime_plugin.TextCommand):
@@ -14,22 +15,22 @@ class AugustListScenesCommand(sublime_plugin.TextCommand):
 
 		output_file = create_buffer(self)
 		output_file.set_name('Scene List')
-		# output_file.set_read_only(True)
+		output_file.set_syntax_file('Packages/August/August Note.sublime-syntax')
 
-		title = 'SCENE LIST: '
+		title = ''
 
 		try:
-			title += os.path.basename(source_file.file_name()).upper() + '\n'
+			title = '\n' + os.path.basename(source_file.file_name())
 		except AttributeError:
-			title += 'UNSAVED FILE\n'
+			title = '\nscenes:'
 
 		output_file.insert(edit, output_file.size(), title)
 
-		index = 1
-
 		for region in source_file.find_by_selector(scope.scene):
-			output_file.insert(edit, output_file.size(), "\n{}.\t{}".format(index, source_file.substr(region)).rstrip())
-			index += 1
+			line = str(source_file.rowcol(region.end())[0] + 1).ljust(8,' ')
+			text = source_file.substr(region).rstrip()
+
+			output_file.insert(edit, output_file.size(), "\nL{} {}".format(line, text))
 
 
 def get_reverse_scope_list(file, scope):
