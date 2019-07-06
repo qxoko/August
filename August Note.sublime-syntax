@@ -1,0 +1,13 @@
+%YAML 1.2
+---
+scope: text.fountain
+contexts:
+  main:
+    - match: '^.+\.\b(fountain|ftn)\b'
+      scope: entity
+    - match: '@\b(todo|fixme|incomplete)\b'
+      scope: support.constant
+    - match: '@\b(done|fixed)\b'
+      scope: storage
+    - match: '^L\d*'
+      scope: support.function

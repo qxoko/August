@@ -11,6 +11,10 @@
 		"command": "august_list_scenes"
 	},
 	{
+		"caption": "August: List Notes",
+		"command": "august_list_notes"
+	},
+	{
 		"caption": "August: Add Scene Numbers",
 		"command": "august_scene_number"
 	},
