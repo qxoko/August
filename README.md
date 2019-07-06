@@ -12,6 +12,8 @@ August provides...
 
 If you're a Fountainhead user, or have written themes for it, you'll be pleased to know August's syntax definition is fully compatible, with a [couple of additions](#syntax-reference).
 
+August also subscribes to the "George R.R. Martin rule" of writing: spellcheck is disabled by default.
+
 #### ⚠️ WARNING
 
 All features, including external ones such as Wrap support, are tested on macOS, Windows and Linux.
