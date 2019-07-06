@@ -8,30 +8,30 @@
 	},
 	{
 		"caption": "Wellspring: List Scenes",
-		"command": "august_list_scenes"
+		"command": "wellspring_list_scenes"
 	},
 	{
 		"caption": "Wellspring: List Notes",
-		"command": "august_list_notes"
+		"command": "wellspring_list_notes"
 	},
 	{
 		"caption": "Wellspring: Add Scene Numbers",
-		"command": "august_scene_number"
+		"command": "wellspring_scene_number"
 	},
 	{
 		"caption": "Wellspring: Remove Scene Numbers",
-		"command": "august_remove_scene_number"
+		"command": "wellspring_remove_scene_number"
 	},
 	{
 		"caption": "Wellspring: Show/Hide Boneyard",
-		"command": "august_hide_boneyard"
+		"command": "wellspring_hide_boneyard"
 	},
 	{
 		"caption": "Wellspring: Merge File",
-		"command": "august_merge"
+		"command": "wellspring_merge"
 	},
 	{
 		"caption": "Wellspring: Split File",
-		"command": "august_split"
+		"command": "wellspring_split"
 	}
 ]
