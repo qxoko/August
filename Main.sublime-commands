@@ -1,37 +1,37 @@
 [
 	{
-		"caption": "August: Make PDF",
+		"caption": "Wellspring: Make PDF",
 		"command": "build",
 		"args": {
-			"file": "Packages/August/August.sublime-build",
+			"file": "Packages/Wellspring/Wellspring.sublime-build",
 		},
 	},
 	{
-		"caption": "August: List Scenes",
+		"caption": "Wellspring: List Scenes",
 		"command": "august_list_scenes"
 	},
 	{
-		"caption": "August: List Notes",
+		"caption": "Wellspring: List Notes",
 		"command": "august_list_notes"
 	},
 	{
-		"caption": "August: Add Scene Numbers",
+		"caption": "Wellspring: Add Scene Numbers",
 		"command": "august_scene_number"
 	},
 	{
-		"caption": "August: Remove Scene Numbers",
+		"caption": "Wellspring: Remove Scene Numbers",
 		"command": "august_remove_scene_number"
 	},
 	{
-		"caption": "August: Show/Hide Boneyard",
+		"caption": "Wellspring: Show/Hide Boneyard",
 		"command": "august_hide_boneyard"
 	},
 	{
-		"caption": "August: Merge File",
+		"caption": "Wellspring: Merge File",
 		"command": "august_merge"
 	},
 	{
-		"caption": "August: Split File",
+		"caption": "Wellspring: Split File",
 		"command": "august_split"
 	}
 ]

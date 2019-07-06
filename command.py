@@ -9,13 +9,13 @@ def create_buffer(context):
 
 	return panel
 
-class AugustListScenesCommand(sublime_plugin.TextCommand):
+class WellspringListScenesCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		source_file = self.view.window().active_view()
 
 		output_file = create_buffer(self)
 		output_file.set_name('Scene List')
-		output_file.set_syntax_file('Packages/August/August Note.sublime-syntax')
+		output_file.set_syntax_file('Packages/Wellspring/Wellspring Note.sublime-syntax')
 
 		title = ''
 
@@ -46,11 +46,11 @@ def clear_scene_numbers(self, edit):
 		new_text = re.sub(r' ?#.+#', '', source_file.substr(region))
 		source_file.replace(edit, region, new_text)
 
-class AugustRemoveSceneNumberCommand(sublime_plugin.TextCommand):
+class WellspringRemoveSceneNumberCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		clear_scene_numbers(self, edit)
 
-class AugustSceneNumberCommand(sublime_plugin.TextCommand):
+class WellspringSceneNumberCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		clear_scene_numbers(self, edit)
 
@@ -63,7 +63,7 @@ class AugustSceneNumberCommand(sublime_plugin.TextCommand):
 			count -= 1
 
 
-class AugustHideBoneyardCommand(sublime_plugin.TextCommand):
+class WellspringHideBoneyardCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		if self.view.fold(self.view.find_by_selector(scope.boneyard)):
 			self.view.fold(self.view.find_by_selector(scope.boneyard))
@@ -71,13 +71,13 @@ class AugustHideBoneyardCommand(sublime_plugin.TextCommand):
 			for region in self.view.find_by_selector(scope.boneyard):
 				self.view.unfold(region)
 
-class AugustMergeCommand(sublime_plugin.TextCommand):
+class WellspringMergeCommand(sublime_plugin.TextCommand):
 	def null(self, name):
 		pass
 
 	def join(self, user_request):
 		if user_request == '':
-			self.view.set_status('August','[August] No filename provided for merge')
+			self.view.set_status('Wellspring','[Wellspring] No filename provided for merge')
 			return
 
 		from .mountain.join import join_wrapper
@@ -101,13 +101,13 @@ class AugustMergeCommand(sublime_plugin.TextCommand):
 		if any(n in self.view.file_name() for n in ['fountain','ftn']):
 			self.view.window().show_input_panel(' filename to write: ', '', self.join, self.null, self.null)
 
-class AugustSplitCommand(sublime_plugin.TextCommand):
+class WellspringSplitCommand(sublime_plugin.TextCommand):
 	def null(self, name):
 		pass
 
 	def split(self, user_request):
 		if user_request == '':
-			self.view.set_status('August','[August] No manifest provided for split')
+			self.view.set_status('Wellspring','[Wellspring] No manifest provided for split')
 			return
 
 		from .mountain.split import split_wrapper

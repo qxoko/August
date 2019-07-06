@@ -9,7 +9,7 @@ def create_note_buffer(context, edit):
 	panel = context.view.window().new_file()
 	panel.set_scratch(True)
 	panel.set_name('Notes')
-	panel.set_syntax_file('Packages/August/August.sublime-syntax')
+	panel.set_syntax_file('Packages/Wellspring/Wellspring.sublime-syntax')
 
 	# panel.erase(edit, sublime.Region(0, panel.size()))
 
@@ -21,7 +21,7 @@ def extract_info_from_files():
 def write_to_buffer(file, edit, text):
 	file.insert(edit, file.size(), text + '\n')
 
-class AugustListNotesCommand(sublime_plugin.TextCommand):
+class WellspringListNotesCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		# get origin buffer
 		source_file      = self.view.window().active_view()
@@ -33,7 +33,7 @@ class AugustListNotesCommand(sublime_plugin.TextCommand):
 
 		# create destination buffer
 		output_file = create_note_buffer(self, edit)
-		output_file.set_syntax_file('Packages/August/August Note.sublime-syntax')
+		output_file.set_syntax_file('Packages/Wellspring/Wellspring Note.sublime-syntax')
 
 		first_note = True
 
