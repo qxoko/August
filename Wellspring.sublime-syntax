@@ -72,6 +72,7 @@ contexts:
       scope: string
       push:
         - meta_scope: dialogue
+        - include: boneyard
         - include: parentheticals
         - include: markup
         - include: note
