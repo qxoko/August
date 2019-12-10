@@ -72,9 +72,6 @@ The workflow is controlled entirely with the use of two keywords, `include` and 
 Create a manifest file at the top level of your screenplay's directory.  You'll need to use a `.fountain` or `.ftn` file extension.  The following example references two scene files stored in folders `act1` and `act3` alongside the manifest.
 
 ```
-title: Big Fish
-author: John Wellspring
-
 # ACT I
 
 [[include: act1/introduction.fountain]]
@@ -121,9 +118,9 @@ Some syntax will be automatically capitalised and appropriate newlines inserted 
 You can enable or disable them individually in your `User/Wellspring.sublime-settings` file.  All are enabled by default upon installation.
 
 ```json
-"auto_cap_scenes": false,
-"auto_cap_characters": false,
-"auto_cap_transitions": false,
+"auto_cap_scenes": true,
+"auto_cap_characters": true,
+"auto_cap_transitions": true,
 ```
 
 FYI: Some false positives may occur, where certain words will be undesirably capitalised.  These are always caused by the `auto_cap_characters` setting, and disabling it will fix the issue.  Chances are, you will never see one, as they are incredibly rare, but nearly impossible to completely eradicate due to restrictions in Sublime Text's macro engine.
@@ -187,7 +184,7 @@ Brings typewriter-style scrolling to your long writing sessions.  Use `"typewrit
 
 ## Known Issues
 
-+ mountain integration is structurally messy and needs a cleanup
-+ markup syntax does not nest
-+ markup will act on text even if there is no closing element [violating line-jumping rules](https://fountain.io/syntax#section-emphasis)
-+ [character extensions](https://fountain.io/syntax#section-character) are not currently able to be lowercase and still highlight correctly.  Can still be used with the `@` force syntax
++ Mountain integration is structurally messy and needs a cleanup.
++ Markup syntax does not nest.
++ Markup will act on text even if there is no closing element, [violating line-jumping rules](https://fountain.io/syntax#section-emphasis).
++ [Character extensions](https://fountain.io/syntax#section-character) are not currently able to be lowercase and still highlight correctly.  Can still be used with the `@` force syntax.
